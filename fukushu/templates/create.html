@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block header %}
+<div class="jumbotron h-0">
+  <h1 class="display-4">過去問の復讐をしましょう！</h1>
+    <hr class="my-10">
+    <p class="lead">復習じゃなくて復讐。1回解いたら終わりじゃない、体が覚えるまでやれ！</p>
+</div>
+{% endblock %}
+{% block content %}
+<form action="" method="post">{% csrf_token %}
+    <table>
+{{  form.as_table }}
+    </table>
+<input type="submit" value="作成">
+</form>
+{% endblock content %}

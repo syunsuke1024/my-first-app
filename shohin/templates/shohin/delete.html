@@ -1,0 +1,26 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'shohin/CSS/style.css' %}" />
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <p>※下記レコードを削除します</p>
+    <table>
+        <tr><th>ID</th><td>{{obj.id}}</td></tr>
+        <tr><th>商品名</th><td>{{obj.shohinmei}}</td></tr>
+        <tr><th>店名</th><td>{{obj.tenmei}}</td></tr>
+        <tr><th>価格</th><td>{{obj.kakaku}}</td></tr>
+        <tr><th>登録日</th><td>{{obj.create_at}}</td></tr>
+        <form action="{% url 'delete' id %}" method="post">
+            {% csrf_token %}
+            <tr><th></th><td><input type="submit" value="click"></td></tr>
+        </form>
+    </table>
+
+</body>
+</html>

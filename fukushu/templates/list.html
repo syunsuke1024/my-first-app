@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<div class="jumbotron h-0">
+  <h1 class="display-4">過去問の復讐をしましょう！</h1>
+    <hr class="my-10">
+    <p class="lead">復習じゃなくて復讐。1回解いたら終わりじゃない、体が覚えるまでやれ！</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <p>
+    <a href="{% url 'create' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">新しいコンテストを登録</a>
+    </p>
+<div class="alert alert-dark" role="alert">
+    <div class="row">
+        <div class="col">
+
+            <h3>コンテスト</h3>
+
+        </div>
+        <div class="col">
+        <a href="" class="btn btn-dark disabled w-100" role="button" aria-pressed="true">ABC : C  <br>ARC,AGC : A</a>
+        </div>
+        <div class="col">
+        <a href="" class="btn btn-dark disabled w-100" role="button" aria-pressed="true">ABC : D  <br>ARC,AGC : B</a>
+        </div>
+        <div class="col">
+        <a href="" class="btn btn-dark disabled w-100" role="button" aria-pressed="true">ABC : E   <br>ARC,AGC : C</a>
+        </div>
+        <div class="col">
+        <a href="" class="btn btn-dark disabled w-100" role="button" aria-pressed="true">ABC : F   <br>ARC,AGC : D</a>
+        </div>
+        <div class="col-xl-1">
+        <a href="" class="btn btn-link disabled h-100" role="button" aria-pressed="true"></a>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div class="container">
+
+{% for item in object_list %}
+    <div class="alert alert-primary" role="alert">
+        <div class="row">
+            <div class="col">
+                <h3>{{ item.title }}</h3>
+            </div>
+            <div class="col">
+                {% if item.problem1 == 'link' %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-dark btn active w-100" role="button" aria-pressed="true">Nothing</a>
+                {% elif item.problem1 == 'dark' %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-{{item.problem1}} btn active w-100" role="button" aria-pressed="true">____</a>
+                {% elif item.problem1 == 'secondary' %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-{{item.problem1}} btn active w-100" role="button" aria-pressed="true">____</a>
+                {% else %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-{{item.problem1}} btn active w-100" role="button" aria-pressed="true">{{ item.date1 }}</a>
+                {% endif %}
+            </div>
+            <div class="col">
+                {% if item.problem2 == 'link' %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-dark btn active w-100" role="button" aria-pressed="true">Nothing</a>
+                {% elif item.problem2 == 'dark' %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-{{item.problem2}} btn active w-100" role="button" aria-pressed="true">____</a>
+                {% elif item.problem2 == 'secondary' %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-{{item.problem2}} btn active w-100" role="button" aria-pressed="true">____</a>
+                {% else %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-{{item.problem2}} btn active w-100" role="button" aria-pressed="true">{{ item.date2 }}</a>
+                {% endif %}
+            </div>
+            <div class="col">
+                {% if item.problem3 == 'link' %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-dark btn active w-100" role="button" aria-pressed="true">Nothing</a>
+                {% elif item.problem3 == 'dark' %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-{{item.problem3}} btn active w-100" role="button" aria-pressed="true">____</a>
+                {% elif item.problem3 == 'secondary' %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-{{item.problem3}} btn active w-100" role="button" aria-pressed="true">____</a>
+                {% else %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-{{item.problem3}} btn active w-100" role="button" aria-pressed="true">{{ item.date3 }}</a>
+                {% endif %}
+            </div>
+            <div class="col">
+                {% if item.problem4 == 'link' %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-dark btn active w-100" role="button" aria-pressed="true">Nothing</a>
+                {% elif item.problem4 == 'dark' %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-{{item.problem4}} btn active w-100" role="button" aria-pressed="true">____</a>
+                {% elif item.problem4 == 'secondary' %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-{{item.problem4}} btn active w-100" role="button" aria-pressed="true">____</a>
+                {% else %}
+                <a href="{% url 'update' item.pk %}" class="btn btn-{{item.problem4}} btn active w-100" role="button" aria-pressed="true">{{ item.date4 }}</a>
+                {% endif %}
+            </div>
+
+        <div class="col-xl-1">
+        <a href="{% url 'delete' item.pk %}" class="btn btn-link btn active w-10" role="button" aria-pressed="true">Delete</a>
+        </div>
+        </div>
+</div>
+
+{% endfor %}
+</div>
+{% endblock content %}

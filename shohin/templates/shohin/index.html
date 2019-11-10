@@ -1,0 +1,49 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" type="text/css"
+        href="{% static 'shohin/CSS/style.css' %}" />
+</head>
+<body>
+    <h1>{{title}}</h1>
+    <table>
+        <tr>
+            <th>id</th>
+            <th>商品名</th>
+            <th>店名</th>
+            <th>価格(円)</th>
+            <th>登録日</th>
+            <th>更新</th>
+            <th>削除</th>
+        </tr>
+    {% for item in data %}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.shohinmei}}</td>
+            <td>{{item.tenmei}}</td>
+            <td>{{item.kakaku}}</td>
+            <td>{{item.create_at|date:"y/n/j"}}</td>
+            <td><a href="{% url 'edit' item.id %}">Update</a> </td>
+            <td><a href="{% url 'delete' item.id %}">Delete</a> </td>
+        </tr>
+    {% endfor %}
+    </table>
+    <div class="pagination">
+        {% if data.has_previous %}
+            <a href="{% url 'index' %}">&laquo;first</a>
+            <a href="{% url 'index' %}{{data.previous_page_number}}">&laquo;prev</a>
+        {% endif %}
+        <span class="current">
+            [{{data.number}}/{{data.paginator.num_pages}}]
+        </span>
+        {% if data.has_next %}
+            <a href="{% url 'index' %}{{data.next_page_number}}">next&raquo;</a>
+            <a href="{% url 'index' %}{{data.next_page_number}}">last&raquo;</a>
+        {% endif %}
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block header %}
+<div class="jumbotron h-0">
+  <h1 class="display-4">過去問の復讐をしましょう！</h1>
+    <hr class="my-10">
+    <p class="lead">復習じゃなくて復讐。1回解いたら終わりじゃない、体が覚えるまでやれ！</p>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="alert alert-danger" role="alert">
+
+  <form action="" method="post">{% csrf_token %}
+    本当に{{ object }}を削除しますか？
+  <input type="submit" class="btn btn-danger btn-lg active" role="button" aria-pressed="true" value="削除">
+</form>
+
+</div>
+  </div>
+
+
+{% endblock content %}
