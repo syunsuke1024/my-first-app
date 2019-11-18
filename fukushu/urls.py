@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.urls import path,include
-from .views import FukushuList,FukushuDetail,FukushuCreate,FukushuDelete,FukushuUpdate
+from .views import FukushuList,FukushuDetail,FukushuCreate,FukushuDelete,FukushuUpdate,index,form
 
 urlpatterns = [
     path('list/',FukushuList.as_view(),name='list'),
@@ -9,4 +9,6 @@ urlpatterns = [
     path('create/',FukushuCreate.as_view(),name='create'),
     path('delete/<int:pk>',FukushuDelete.as_view(),name='delete'),
     path('update/<int:pk>',FukushuUpdate.as_view(),name='update'),
+    path('index/',index,name='index'),
+    path('check/',form,name='check'),
 ]

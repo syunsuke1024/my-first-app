@@ -4,6 +4,17 @@ from django.views.generic import ListView,DeleteView,DetailView,UpdateView,Creat
 from .models import FukushuModel
 from django.urls import reverse_lazy
 # Create your views here.
+def index(request):
+    return render(request,'check.html')
+
+def form(request):
+    kekka=request.POST['kekka']
+    params = {}
+
+    ans=list(kekka.split())
+    params["dict1"] = ans[0]
+    params["dict2"] = ans[1]
+    return render(request,'check2.html',params)
 
 
 class FukushuList(ListView):
